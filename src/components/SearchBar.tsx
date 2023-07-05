@@ -39,7 +39,7 @@ const SearchBar = () => {
           type="search"
           placeholder="Search for any word..."
           className={cn(
-            "block w-full rounded-2xl border-0 bg-neutral-400 py-[14px] pl-6 ring-0 placeholder:font-bold placeholder:text-neutral-700/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple dark:bg-neutral-800 dark:placeholder:text-white/25 md:py-5",
+            "block w-full rounded-2xl border-0 bg-neutral-300 py-[14px] pl-6 ring-0 placeholder:font-bold placeholder:text-neutral-700/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple dark:bg-neutral-800 dark:placeholder:text-white/25 md:py-5",
             error
               ? "border border-orange focus-visible:border-orange focus-visible:ring-orange"
               : "",
