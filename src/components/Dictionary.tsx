@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import { FontContext } from "../contexts/fontContext";
 import { fontFamilies } from "../data/fontFamilies";
 import { rootLoader } from "../routes/rootLoader";
@@ -10,6 +10,8 @@ import SearchResultContainer from "./SearchResultContainer";
 function Dictionary() {
   const { searchResult } = useLoaderData() as Awaited<ReturnType<typeof rootLoader>>;
   const [font, setFont] = React.useState(fontFamilies[0]);
+  const navigation = useNavigation();
+  const loading = navigation.state === "loading";
 
   return (
     <FontContext.Provider value={{ font, setFont }}>
@@ -19,7 +21,7 @@ function Dictionary() {
         <Header />
         <main>
           <SearchBar />
-          {searchResult && <SearchResultContainer searchResult={searchResult} />}
+          <SearchResultContainer searchResult={searchResult} loading={loading} />
         </main>
       </div>
     </FontContext.Provider>

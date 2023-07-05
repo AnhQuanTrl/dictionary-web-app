@@ -1,4 +1,3 @@
-import { useNavigation } from "react-router-dom";
 import { useAudio } from "../hooks/useAudio";
 import { SearchResult } from "../types/searchResult";
 import Icon from "./Icon";
@@ -8,18 +7,24 @@ import Skeleton from "./Skeleton";
 import SkeletonGroup from "./SkeletonGroup";
 
 interface SearchResultDefinitionProps {
-  searchResult: SearchResult | null;
+  searchResult?: SearchResult | null;
+  loading?: boolean;
 }
 
-const SearchResultDefinition = ({ searchResult }: SearchResultDefinitionProps) => {
+const SearchResultDefinition = ({
+  searchResult = null,
+  loading = false,
+}: SearchResultDefinitionProps) => {
   const phonetic = searchResult?.phonetics[0];
   const sourceUrl = searchResult?.sourceUrls.reverse()[0];
   const [playing, toggle] = useAudio(phonetic?.audio);
-  const navigation = useNavigation();
-  const loading = navigation.state === "loading";
+
+  if (!loading && !searchResult) {
+    return null;
+  }
 
   return (
-    <SkeletonGroup show={!searchResult}>
+    <SkeletonGroup show={loading}>
       <div className="mb-7 mt-6 flex items-center justify-between md:mt-10">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl font-bold md:text-6xl">

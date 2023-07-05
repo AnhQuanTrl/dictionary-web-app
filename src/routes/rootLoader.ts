@@ -8,5 +8,6 @@ export async function rootLoader({ request }: { request: Request }) {
   }
 
   const searchResult = await fetchFromDictionary(searchTerm);
-  return { searchResult };
+  console.log(searchResult);
+  return { searchResult, q: searchTerm };
 }

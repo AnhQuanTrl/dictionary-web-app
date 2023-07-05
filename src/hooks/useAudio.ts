@@ -13,7 +13,6 @@ export const useAudio = (url: string | undefined) => {
     if (playing) {
       audio.pause();
     } else {
-      console.log("trying to play");
       audio.play();
     }
     setPlaying(!playing);
@@ -30,7 +29,6 @@ export const useAudio = (url: string | undefined) => {
       return;
     }
 
-    console.log(url);
     audio.src = url;
     audio.load();
   }, [url]);

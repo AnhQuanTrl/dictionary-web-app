@@ -4,6 +4,7 @@ import SearchResultDefinition from "./SearchResultDefinition";
 
 interface SearchResultContainerProps {
   searchResult: SearchResult | FallbackResult | null;
+  loading: boolean;
 }
 
 const isFallbackResult = (
@@ -12,7 +13,11 @@ const isFallbackResult = (
   return !!result && typeof (result as FallbackResult).title !== "undefined";
 };
 
-const SearchResultContainer = ({ searchResult }: SearchResultContainerProps) => {
+const SearchResultContainer = ({ searchResult, loading }: SearchResultContainerProps) => {
+  if (loading) {
+    return <SearchResultDefinition loading={loading} />;
+  }
+
   if (isFallbackResult(searchResult)) {
     return (
       <div className="mt-32 text-center">

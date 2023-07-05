@@ -1,12 +1,14 @@
 import React from "react";
 import Icon from "./Icon";
 import { cn } from "../utils";
-import { Form, useSubmit } from "react-router-dom";
+import { Form, useLoaderData, useSubmit } from "react-router-dom";
+import { rootLoader } from "../routes/rootLoader";
 
 const SearchBar = () => {
+  const { q } = useLoaderData() as Awaited<ReturnType<typeof rootLoader>>;
   const submit = useSubmit();
   const searchBar = React.useRef<HTMLInputElement>(null);
-  const [searchInput, setSearchInput] = React.useState("");
+  const [searchInput, setSearchInput] = React.useState(q);
   const [error, setError] = React.useState("");
 
   const handleSubmit: React.ComponentProps<"form">["onSubmit"] = (e) => {
@@ -25,7 +27,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Form id="search-form" role="search" onSubmit={handleSubmit}>
+    <Form id="search-form" role="search" onSubmit={handleSubmit} defaultValue={q}>
       <span className="relative block">
         <label className="sr-only" htmlFor="search-term">
           Search for meaning
