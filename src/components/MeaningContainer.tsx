@@ -29,7 +29,7 @@ const MeaningContainer = ({ meaning, loading = false }: MeaningContainerProps) =
                 {definition.definition}
                 <br />
                 {definition.example && (
-                  <blockquote className="text-neutral-500">“{definition.example}</blockquote>
+                  <blockquote className="mt-3 text-neutral-500">“{definition.example}</blockquote>
                 )}
               </li>
             ))}
@@ -42,7 +42,7 @@ const MeaningContainer = ({ meaning, loading = false }: MeaningContainerProps) =
                   <li key={synonym} className="list-none font-bold text-purple">
                     <Link
                       to={`?q=${synonym}`}
-                      className="hover:decoration-inherit underline decoration-transparent transition duration-200 ease-in-out focus-visible:"
+                      className="focus-visible: underline decoration-transparent transition duration-200 ease-in-out hover:decoration-inherit"
                     >
                       {synonym}
                     </Link>

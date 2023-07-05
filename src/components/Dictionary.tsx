@@ -17,8 +17,10 @@ function Dictionary() {
         className={`mx-auto box-content min-h-screen max-w-2xl px-6 pt-6 md:pt-14 ${font.className}`}
       >
         <Header />
-        <SearchBar />
-        {searchResult && <SearchResultContainer searchResult={searchResult} />}
+        <main>
+          <SearchBar />
+          {searchResult && <SearchResultContainer searchResult={searchResult} />}
+        </main>
       </div>
     </FontContext.Provider>
   );
