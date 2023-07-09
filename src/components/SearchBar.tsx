@@ -27,7 +27,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Form id="search-form" role="search" onSubmit={handleSubmit} defaultValue={q}>
+    <Form id="search-form" role="search" onSubmit={handleSubmit}>
       <span className="relative block">
         <label className="sr-only" htmlFor="search-term">
           Search for meaning
@@ -37,6 +37,7 @@ const SearchBar = () => {
           id="search-term"
           name="q"
           value={searchInput}
+          defaultValue={q}
           onChange={handleInputChange}
           type="search"
           placeholder="Search for any word..."
